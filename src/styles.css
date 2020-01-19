@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+@media (max-width:670px) {
+  .sideNav {
+    display: none;
+  }
+  .search {
+    display: none;
+  }
+}
+@media(max-width:600px) {
+  th {
+    font-size: 12px;
+  }
+  td {
+    font-size: 12px;
+  }
+}
+@media (min-width: 1200px) {
+.container, .container-lg, .container-md, .container-sm, .container-xl {
+    max-width: 1220px !important;
+} }
+.navbar-dark .navbar-toggler {
+  color: rgba(255,255,255,.5);
+  border-color: rgba(255,255,255,.1);
+  background-image: linear-gradient(to bottom, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+}
+nav {
+  margin-bottom: 2rem;
+}

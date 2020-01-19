@@ -1,0 +1,214 @@
+<div class="sideNav">
+  <ul>
+    <li><a href=""><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a></li>
+    <li><a href=""><i class="fa fa-address-book fa-1x" aria-hidden="true"></i></a></li>
+    <li><a href=""><i class="fa fa-user-circle fa-1x" aria-hidden="true"></i></a></li>
+    <li><a href=""><i class="fa fa-cubes fa-1x" aria-hidden="true"></i></a></li>
+    <li><a href=""><i class="fa fa-check-square-o fa-1x" aria-hidden="true"></i></a></li>
+    <li><a href=""><i class="fa fa-bug fa-1x" aria-hidden="true"></i></a></li>
+    <li><a href=""><i class="fa fa-database fa-1x" aria-hidden="true"></i></a></li>
+  </ul>
+</div>
+<nav class="navbar navbar-expand-md bg-white navbar-dark shadow-sm">
+  <div class="navbar-collapse">
+    <div class="search">
+      <i class="fa fa-search fa-1x" aria-hidden="true"></i>
+    </div>
+    <div class="nav_right">
+      <h6><a href="">Add</a></h6>
+      <div class="mail"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+      <div class="dropdown">
+        <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Mark Henry
+          <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="#">HTML</a></li>
+          <li><a href="#">CSS</a></li>
+          <li><a href="#">JavaScript</a></li>
+        </ul>
+      </div>
+      <div class="mail"><i class="fa fa-bell" aria-hidden="true"></i></div>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-7">
+      <div class="con_head">
+        <div class="bookmark">
+          <i class="fa fa-address-book-o fa-2x" aria-hidden="true"></i>
+          <div class="th">
+            <h3 class="heade">Contacts</h3>
+            <p class="cont">Welcome to contact page</p>
+          </div>
+          <div>
+            <h6>Sort By&nbsp;:<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Date Created
+                <span class="caret"></span></button></h6>
+          </div>
+        </div>
+      </div>
+      <div class="filter">
+        <input class="form-control border-secondary py-2 sea" type="search" value="search">
+        <div class="button1">
+          <button type="button" (click)="showModel=true" class="btn">+&nbsp;Add Contact</button>
+        </div>
+      </div>
+      <div class="container">
+        <table class="table table-trapped">
+          <thead>
+            <tr>
+              <th>Basic info</th>
+              <th>Company</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let num of users; let i = index" (click)="dataretrive(i)">
+              <td>{{num.name}}<br>{{num.mail}}</td>
+              <td>{{num.companyn}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-5">
+      <div class="customer_details">
+        <div class="info">
+          <div class="short_name center">{{shortName}}</div>
+          <div class="edit">
+            <button type="button" (click)="showModelEdit=true" class="btn">Edit</button>
+          </div>
+          <div class="name center">{{userView.name}}</div>
+          <div class="mailt center">{{userView.mail}}</div>
+          <table class="table">
+            <tr>
+              <td>Full name</td>
+              <td>{{userView.name}}</td>
+            </tr>
+            <tr>
+              <td>Email</td>
+              <td>{{userView.mail}}</td>
+            </tr>
+            <tr>
+              <td>Phone</td>
+              <td>{{userView.ph}}</td>
+            </tr>
+            <tr>
+              <td>Company</td>
+              <td>{{userView.companyn}}</td>
+            </tr>
+            <tr>
+              <td>Address</td>
+              <td>{{userView.addr}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog" [ngClass]="{'show':showModel}">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="showModel=false" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="col-sm-12 col-md-12">
+          <div class="container">
+            <form #userForm="ngForm" (ngSubmit)="onSubmit(name, jmail, company, address, phone)" novalidate>
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" #name [class.is-invalid]="name.invalid && name.touched" class="form-control is-invalid"
+                  required name="Name">
+                <small class="text-danger" [class.d-none]="name.valid || name.untouched">Name is required</small>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" #jmail class="form-control" required name="email">
+              </div>
+              <div class="form-group">
+                <label>Company</label>
+                <input type="text" #company class="form-control" name="company">
+              </div>
+              <div class="form-group">
+                <label>Address</label>
+                <input type="text" #address class="form-control" required name="Address">
+              </div>
+              <div class="form-group">
+                <label>Phone</label>
+                <input type="tel" #phone [class.is-invalid]="phone.invalid && phone.touched" pattern="^\d{10}$" class="form-control is-invalid"
+                  required name="phone" ngModel>
+                <div *ngIf="phone.errors && (phone.invalid || phone.touched)">
+                  <small class="text-danger" *ngIf="phone.errors.required">Phone number is required</small>
+                  <small class="text-danger" *ngIf="phone.errors.pattern">Phone number must be 10 digits</small>
+                </div>
+              </div>
+              <button class="btn btn-primary" [disabled]="userForm.form.invalid" type="submit">Add Contact</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+<!-- edit form -->
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog" [ngClass]="{'show':showModelEdit}">
+  <div class="modal-dialog">
+
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>Edit Form</h5>
+        <button type="button" class="close" (click)="showModelEdit=false" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="col-sm-12 col-md-12">
+          <div class="container">
+            <form #userFormEdit="ngForm" (ngSubmit)="onEdit()" novalidate>
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" #nameEdit [(ngModel)]="userEdit.name" [class.is-invalid]="name.invalid && name.touched"
+                  class="form-control is-invalid" required name="Name">
+                <small class="text-danger" [class.d-none]="name.valid || name.untouched">Name is required</small>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" #jmailEdit [(ngModel)]="userEdit.mail" class="form-control" required name="email">
+              </div>
+              <div class="form-group">
+                <label>Company</label>
+                <input type="text" #companyEdit [(ngModel)]="userEdit.companyn" class="form-control" name="company">
+              </div>
+              <div class="form-group">
+                <label>Address</label>
+                <input type="text" #addressEdit [(ngModel)]="userEdit.addr" class="form-control" required name="Address">
+              </div>
+              <div class="form-group">
+                <label>Phone</label>
+                <input type="tel" #phoneEdit [(ngModel)]="userEdit.ph" [class.is-invalid]="phone.invalid && phone.touched"
+                  pattern="^\d{10}$" class="form-control is-invalid" required name="phone" ngModel>
+                <div *ngIf="phone.errors && (phone.invalid || phone.touched)">
+                  <small class="text-danger" *ngIf="phone.errors.required">Phone number is required</small>
+                  <small class="text-danger" *ngIf="phone.errors.pattern">Phone number must be 10 digits</small>
+                </div>
+              </div>
+              <button class="btn btn-primary" [disabled]="userFormEdit.form.invalid" type="submit">Add Contact</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

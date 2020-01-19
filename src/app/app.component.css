@@ -1,0 +1,134 @@
+.search {
+  margin-left: 5%;
+}
+.search img {
+  width: 30px;
+}
+.nav_right {
+  float: right;
+    color: #000;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.nav_right>h6>a {
+  text-decoration: none;
+  color: #000;
+  float: right;
+}
+.nav_right>h6>a::before {
+  content: '\002B';
+}
+h6 {
+  margin: 0;
+}
+.mail {
+  padding: 0px 10px 0px 10px;
+}
+.overall {
+  padding: 20px 0px 20px 0px;;
+}
+.sideNav {
+  position: absolute;
+    height: 100vh;
+    width: 40px;
+    z-index: 1 !important;
+  background-image: linear-gradient(to bottom, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+}
+.button1 {
+  margin-left: 2rem;
+}
+.button1>button {
+  color: #fff;
+  background-image: linear-gradient(to bottom, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+}
+
+.sea {
+  width: 30%;
+}
+.filter {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.heade {
+  margin:0;
+}
+.con_head {
+  margin-bottom: 2rem;
+  display: flex;
+}
+.edit {
+  position: absolute;
+    top: 25px;
+    right: 30px;
+}
+.edit a {
+  text-decoration: none;
+}
+.th {
+  margin: 0rem 2rem 0rem 2rem;;
+}
+.cont {
+  margin: 0;
+}
+.bookmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sideNav>ul {
+  list-style-type: none;
+  padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.sideNav>ul>li {
+  margin: 1.5rem 0rem 0rem 0rem;
+}
+.sideNav>il>li:hover {
+  border: 2px solid #000;
+  z-index: 2;
+}
+.sideNav>ul>li>a {
+  text-decoration: none;
+  color: #fff;
+}
+.modal.show {
+  display: block;
+}
+.customer_details {
+  background: #d6d0d1;
+  padding: 20px;
+}
+.center {
+  text-align: center;
+}
+.short_name {
+    background: #d3f324;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    padding: 15px;
+    margin: auto;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fa-2x {
+  font-size: 1.5em;
+}
+
+.name {
+  font-weight: 650;
+}
+.mailt {
+  margin-bottom: 2rem;
+}
+.table td, .table th {
+  border-top: 1px solid #d6d0d1;
+}
